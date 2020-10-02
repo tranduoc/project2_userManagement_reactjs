@@ -1,6 +1,20 @@
 import React, { Component } from "react";
+import DataRow from "./DataRow";
 
 class DataTable extends Component {
+  mappingDataUser = () => {
+    return this.props.dataUserProps.map((value, key) => (
+      <DataRow
+        key={key}
+        number={key}
+        name={value.name}
+        password={value.password}
+        phone={value.phone}
+        authority={value.authority}
+      />
+    ));
+  };
+
   render() {
     return (
       <div className="col-9">
@@ -14,24 +28,7 @@ class DataTable extends Component {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>An Binh</td>
-              <td>0978</td>
-              <td>admin</td>
-              <td>
-                <div className="btn-group">
-                  <button type="button" className="btn btn-success">
-                    Edit
-                  </button>
-                  <button type="button" className="btn btn-danger">
-                    Delete
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+          <tbody>{this.mappingDataUser()}</tbody>
         </table>
       </div>
     );

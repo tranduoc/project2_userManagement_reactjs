@@ -1,0 +1,51 @@
+[
+  {
+    "id": 0,
+    "name": "An Duc",
+    "password": 1234,
+    "phone": "0978889776",
+    "authority": 1
+  },
+  {
+    "id": 1,
+    "name": "An Thai",
+    "password": 1234,
+    "phone": "0978889777",
+    "authority": 3
+  },
+  {
+    "id": 2,
+    "name": "An Nhien",
+    "password": 1234,
+    "phone": "0978889778",
+    "authority": 2
+  },
+  {
+    "id": 3,
+    "name": "Van Binh",
+    "password": 1234,
+    "phone": "0978889779",
+    "authority": 1
+  },
+  {
+    "id": 4,
+    "name": "Thanh Binh",
+    "password": 1234,
+    "phone": "0978889770",
+    "authority": 1
+  },
+  {
+    "id": 5,
+    "name": "Huy Binh",
+    "password": 1234,
+    "phone": "0978889771",
+    "authority": 2
+  },
+  {
+    "id": 6,
+    "name": "Hai Binh",
+    "password": 1234,
+    "phone": "0978889772",
+    "authority": 3
+  }
+]
