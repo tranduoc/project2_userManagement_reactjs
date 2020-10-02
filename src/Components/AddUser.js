@@ -5,12 +5,9 @@ class AddUser extends Component {
     super(props);
     this.state = {};
   }
-  showInfo = () => {
-    console.log("hello world");
-  };
-  render() {
-    return (
-      <div className="col-3">
+  checkStatus = () => {
+    if (this.props.showForm === true) {
+      return (
         <div
           className="card text-white bg-primary mb-3"
           style={{ maxWidth: "18rem" }}
@@ -58,8 +55,11 @@ class AddUser extends Component {
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+  };
+  render() {
+    return <div className="col-3">{this.checkStatus()}</div>;
   }
 }
 
