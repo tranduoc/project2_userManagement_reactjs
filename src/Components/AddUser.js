@@ -3,29 +3,18 @@ import React, { Component } from "react";
 class AddUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      executiveStatus: false,
-    };
+    this.state = {};
   }
-
-  showAddUser = () => {
-    if (this.state.executiveStatus) {
-      return (
+  showInfo = () => {
+    console.log("hello world");
+  };
+  render() {
+    return (
+      <div className="col-3">
         <div
           className="card text-white bg-primary mb-3"
           style={{ maxWidth: "18rem" }}
         >
-          <div className="card-header text-center">
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={() => {
-                this.changeStatus();
-              }}
-            >
-              Close
-            </button>
-          </div>
           <div className="card-body">
             <div className="form-group">
               <input
@@ -69,26 +58,8 @@ class AddUser extends Component {
             </div>
           </div>
         </div>
-      );
-    } else {
-      return (
-        <button
-          type="button"
-          className="btn btn-primary container mb-2"
-          onClick={() => {
-            this.changeStatus();
-          }}
-        >
-          Add User
-        </button>
-      );
-    }
-  };
-  changeStatus = () => {
-    this.setState({ executiveStatus: !this.state.executiveStatus });
-  };
-  render() {
-    return <div className="col-3">{this.showAddUser()}</div>;
+      </div>
+    );
   }
 }
 
