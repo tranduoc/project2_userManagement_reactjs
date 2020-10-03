@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tempValue: "",
+    };
+  }
+  isChange = (event) => {
+    this.setState({
+      tempValue: event.target.value,
+    });
+    this.props.searchResult1(this.state.tempValue);
+  };
+
   showBottom = () => {
     if (this.props.showForm === true) {
       return (
@@ -35,17 +48,19 @@ class Search extends Component {
           <div className="col-9">
             <form className="form-inline">
               <div className="form-group mx-sm-3 mb-2">
-                <label htmlFor="search" className="sr-only">
-                  Search
-                </label>
                 <input
-                  type="password"
+                  type="text"
                   className="form-control"
-                  id="search"
                   placeholder="Username"
+                  onChange={(event) => this.isChange(event)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary mb-2">
+              <button
+                className="btn btn-primary mb-2"
+                onClick={(datatext) =>
+                  this.props.searchResult1(this.state.tempValue)
+                }
+              >
                 Search
               </button>
             </form>
