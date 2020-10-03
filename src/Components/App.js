@@ -30,6 +30,22 @@ class App extends Component {
       searchText: dt,
     });
   };
+
+  getNewUserData = (name, password, phone, authority) => {
+    let item = {};
+    item.id = "";
+    item.name = name;
+    item.password = password;
+    item.phone = phone;
+    item.authority = authority;
+
+    let users = this.state.data;
+
+    users.push(item);
+    this.setState({
+      data: users,
+    });
+  };
   render() {
     let result = [];
 
@@ -50,7 +66,12 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <DataTable dataUserProps={result} />
-            <AddUser showForm={this.state.showForm} />
+            <AddUser
+              showForm={this.state.showForm}
+              getNewUserData1={(name, password, phone, authority) =>
+                this.getNewUserData(name, password, phone, authority)
+              }
+            />
           </div>
         </div>
       </div>

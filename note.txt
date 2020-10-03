@@ -1,0 +1,1 @@
+- Cách giải quyết chức năng tìm kiếm tối ưu, tại sao quá trình tìm kiếm lại render 2 lần, fig bug do biết var time = now() trong backend?
