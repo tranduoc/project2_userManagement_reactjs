@@ -3,8 +3,22 @@ import React, { Component } from "react";
 class AddUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      id: "",
+      name: "",
+      password: "",
+      phone: "",
+      authority: "",
+    };
   }
+  ischangeUser = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   checkStatus = () => {
     if (this.props.showForm === true) {
       return (
@@ -16,8 +30,9 @@ class AddUser extends Component {
             <div className="card-body">
               <div className="form-group">
                 <input
+                  onChange={(e) => this.ischangeUser(e)}
                   type="text"
-                  name="username"
+                  name="name"
                   className="form-control"
                   placeholder="User name"
                   aria-describedby="helpId"
@@ -25,6 +40,7 @@ class AddUser extends Component {
               </div>
               <div className="form-group">
                 <input
+                  onChange={(e) => this.ischangeUser(e)}
                   type="text"
                   name="password"
                   className="form-control"
@@ -34,15 +50,20 @@ class AddUser extends Component {
               </div>
               <div className="form-group">
                 <input
+                  onChange={(e) => this.ischangeUser(e)}
                   type="text"
-                  name="phonenumber"
+                  name="phone"
                   className="form-control"
                   placeholder="Phone number"
                   aria-describedby="helpId"
                 />
               </div>
               <div className="form-group">
-                <select className="custom-select custom-select-sm">
+                <select
+                  className="custom-select custom-select-sm"
+                  name="authority"
+                  onChange={(e) => this.ischangeUser(e)}
+                >
                   <option defaultValue={"Authority"}>Authority</option>
                   <option value={1}>Admin</option>
                   <option value={2}>Staff</option>
@@ -50,7 +71,18 @@ class AddUser extends Component {
                 </select>
               </div>
               <div className="form-group text-center">
-                <button type="button" className="btn btn-warning ">
+                <button
+                  type="button"
+                  className="btn btn-warning "
+                  onClick={(name, password, phone, authority) =>
+                    this.props.getNewUserData1(
+                      this.state.name,
+                      this.state.password,
+                      this.state.phone,
+                      this.state.authority
+                    )
+                  }
+                >
                   Add user
                 </button>
               </div>
