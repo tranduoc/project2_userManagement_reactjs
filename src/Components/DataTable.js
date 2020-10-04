@@ -5,8 +5,9 @@ class DataTable extends Component {
   mappingDataUser = () =>
     this.props.dataUserProps.map((value, key) => (
       <DataRow
+        changeEditStatus2={() => this.props.changeEditStatus1()}
         editUser2={() => {
-          this.props.editUser1();
+          this.props.editUser1(value);
         }}
         key={key}
         number={key}

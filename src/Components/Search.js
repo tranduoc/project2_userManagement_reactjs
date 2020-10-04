@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EditUser from "./EditUser";
 
 class Search extends Component {
   constructor(props) {
@@ -41,9 +42,26 @@ class Search extends Component {
       );
     }
   };
+
+  showEditUser = () => {
+    if (this.props.editUserStatus1 === true) {
+      return (
+        <div className="row">
+          <EditUser
+            changeEditStatus2={() => this.props.changeEditStatus1()}
+            userEdit2={this.props.userEdit1}
+            getEditUserData2={(id, name, password, phone, authority) => {
+              this.props.getEditUserData1(id, name, password, phone, authority);
+            }}
+          />
+        </div>
+      );
+    }
+  };
   render() {
     return (
       <div className="searchForm container">
+        {this.showEditUser()}
         <div className="row">
           <div className="col-9">
             <div className="row">

@@ -14,6 +14,8 @@ class App extends Component {
       showForm: true,
       data: DataUser,
       searchText: "",
+      editUserStatus: false,
+      userEdit: {},
     };
   }
 
@@ -23,6 +25,11 @@ class App extends Component {
   changeStatus = () => {
     this.setState({
       showForm: !this.state.showForm,
+    });
+  };
+  changeEditStatus = () => {
+    this.setState({
+      editUserStatus: !this.state.editUserStatus,
     });
   };
 
@@ -48,8 +55,23 @@ class App extends Component {
       data: users,
     });
   };
-  editUser = () => {
-    console.log("connect");
+
+  getEditUserData = (id, name, password, phone, authority) => {
+    this.state.data.forEach((item, index) => {
+      if (item.id === id) {
+        item.id = id;
+        item.name = name;
+        item.password = password;
+        item.phone = phone;
+        item.authority = authority;
+      }
+    });
+  };
+
+  editUser = (user) => {
+    this.setState({
+      userEdit: user,
+    });
   };
   render() {
     let result = [];
@@ -66,13 +88,24 @@ class App extends Component {
           connectComponent={() => this.changeStatus()}
           showForm={this.state.showForm}
           searchResult1={(dt) => this.searchResult(dt)}
+          editUserStatus1={this.state.editUserStatus}
+          changeEditStatus1={() => {
+            this.changeEditStatus();
+          }}
+          userEdit1={this.state.userEdit}
+          getEditUserData1={(id, name, password, phone, authority) => {
+            this.getEditUserData(id, name, password, phone, authority);
+          }}
         />
         <div className="container">
           <div className="row">
             <DataTable
               dataUserProps={result}
-              editUser1={() => {
-                this.editUser();
+              editUser1={(user) => {
+                this.editUser(user);
+              }}
+              changeEditStatus1={() => {
+                this.changeEditStatus();
               }}
             />
             <AddUser
