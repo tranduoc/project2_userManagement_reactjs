@@ -73,6 +73,13 @@ class App extends Component {
       userEdit: user,
     });
   };
+
+  deleteUser = (id) => {
+    let data = this.state.data.filter((item) => item.id !== id);
+    this.setState({
+      data: data,
+    });
+  };
   render() {
     let result = [];
 
@@ -107,6 +114,7 @@ class App extends Component {
               changeEditStatus1={() => {
                 this.changeEditStatus();
               }}
+              deleteUser1={(id) => this.deleteUser(id)}
             />
             <AddUser
               showForm={this.state.showForm}

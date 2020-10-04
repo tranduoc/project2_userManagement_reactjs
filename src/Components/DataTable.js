@@ -10,11 +10,13 @@ class DataTable extends Component {
           this.props.editUser1(value);
         }}
         key={key}
+        id={value.id}
         number={key}
         name={value.name}
         password={value.password}
         phone={value.phone}
         authority={value.authority}
+        deleteUser2={(id) => this.props.deleteUser1(id)}
       />
     ));
   render() {
