@@ -46,8 +46,8 @@ class Search extends Component {
       <div className="searchForm container">
         <div className="row">
           <div className="col-9">
-            <form className="form-inline">
-              <div className="form-group mx-sm-3 mb-2">
+            <div className="row">
+              <div className="col-9">
                 <input
                   type="text"
                   className="form-control"
@@ -55,15 +55,17 @@ class Search extends Component {
                   onChange={(event) => this.isChange(event)}
                 />
               </div>
-              <button
-                className="btn btn-primary mb-2"
-                onClick={(datatext) =>
-                  this.props.searchResult1(this.state.tempValue)
-                }
-              >
-                Search
-              </button>
-            </form>
+              <div className="col-3">
+                <button
+                  className="btn btn-primary mb-2"
+                  onClick={(datatext) =>
+                    this.props.searchResult1(this.state.tempValue)
+                  }
+                >
+                  Search
+                </button>
+              </div>
+            </div>
           </div>
           <div className="col-3">
             <div className="row">{this.showBottom()}</div>

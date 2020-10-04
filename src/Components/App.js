@@ -5,6 +5,7 @@ import AddUser from "./AddUser";
 import DataTable from "./DataTable";
 import Header from "./Header";
 import Search from "./Search";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class App extends Component {
     };
   }
 
-  checkConnect = () => {
-    alert("connect ok");
-  };
+  // checkConnect = () => {
+  //   alert("connect ok");
+  // };
   changeStatus = () => {
     this.setState({
       showForm: !this.state.showForm,
@@ -33,7 +34,7 @@ class App extends Component {
 
   getNewUserData = (name, password, phone, authority) => {
     let item = {};
-    item.id = "";
+    item.id = uuidv4();
     item.name = name;
     item.password = password;
     item.phone = phone;
@@ -42,9 +43,13 @@ class App extends Component {
     let users = this.state.data;
 
     users.push(item);
+    console.log(users);
     this.setState({
       data: users,
     });
+  };
+  editUser = () => {
+    console.log("connect");
   };
   render() {
     let result = [];
@@ -61,11 +66,15 @@ class App extends Component {
           connectComponent={() => this.changeStatus()}
           showForm={this.state.showForm}
           searchResult1={(dt) => this.searchResult(dt)}
-          checkConnect={() => this.checkConnect()}
         />
         <div className="container">
           <div className="row">
-            <DataTable dataUserProps={result} />
+            <DataTable
+              dataUserProps={result}
+              editUser1={() => {
+                this.editUser();
+              }}
+            />
             <AddUser
               showForm={this.state.showForm}
               getNewUserData1={(name, password, phone, authority) =>
