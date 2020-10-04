@@ -14,6 +14,7 @@ class DataRow extends Component {
     this.props.changeEditStatus2();
     this.props.editUser2();
   };
+
   render() {
     return (
       <tr>
@@ -32,7 +33,13 @@ class DataRow extends Component {
             >
               Edit
             </button>
-            <button type="button" className="btn btn-danger">
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={() => {
+                this.props.deleteUser2(this.props.id);
+              }}
+            >
               Delete
             </button>
           </div>
