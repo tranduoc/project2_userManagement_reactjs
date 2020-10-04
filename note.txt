@@ -1,1 +1,3 @@
 - Cách giải quyết chức năng tìm kiếm tối ưu, tại sao quá trình tìm kiếm lại render 2 lần, fig bug do biết var time = now() trong backend?
+- giải quyết phần tìm kiếm render 2 lần hoặc bị reset lại là do đặt tìm kiếm trong thẻ form, cần chú ý điểm này
+- có thể sử dụng (e), e.preventDefault, chặn việc load lại trang
