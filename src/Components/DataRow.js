@@ -11,6 +11,7 @@ class DataRow extends Component {
     }
   };
   editUserClick = () => {
+    this.props.changeEditStatus2();
     this.props.editUser2();
   };
   render() {
